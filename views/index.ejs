@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>DrawIt</title>
+	<link rel="stylesheet" href="/lib/bootstrap-3.3.7-dist/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="/lib/style.css" />
+	<script type="text/javascript" src="/lib/jquery-3.1.0.min.js"> </script>
+	<script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+	<script src="/lib/jscolor.min.js"></script>
+	<script type="text/javascript" src="/lib/game.js"> </script>
+</head>
+<body>
+	<nav class="navbar navbar-inverse">
+	  <div class="container-fluid">
+	    <div class="navbar-header">
+	      <a class="navbar-brand" href="#">Draw.it <%= version%></a>
+	    </div>
+	  </div>
+	</nav>
+
+	
+
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-8 col-md-offset-2">
+				<div class="well">
+					<canvas width="800" height="600" id="gameCanvas" class="game">
+						You need html5.  Stop being a jew and get a real browser.
+					</canvas>
+					<div id="chatbox" class="chat">
+					</div>
+
+					<div class="input-group" style="width: 250px;">
+						<input type="text" id="chatText" class="form-control" placeholder="/guess word"></guess>
+						<span class="input-group-btn">
+							<button class="btn btn-primary" type="button" id="submitButton"> Submit </button>
+						</span>
+					</div>
+					<br>
+					<button
+				    class="jscolor {valueElement:null,value:'000000'}"
+				    style="border:2px solid black"
+				    id="drawColor">
+				     Color
+					</button>
+					<button id="clear">Clear</button>
+					<label>
+						Size:
+						<input id="cursorSize" type="number" min="1" max="100" value="5">
+							
+						</input>
+					</label>
+				</div>
+			</div>
+		</div>
+
+		<!-- <div class="gameContainer">
+			<canvas width="800" height="600" id="gameCanvas" class="game">
+				You need html5.  Stop being a jew and get a real browser.
+			</canvas>
+			<div class="chatbox">
+			</div>
+			<br>
+			<button id="clear">Clear</button>
+			<button id="guess">Guess</button>
+			<button
+			    class="jscolor {valueElement:null,value:'000000'}"
+			    style="border:2px solid black"
+			    id="drawColor">
+			     Color
+			</button>
+			<label>
+				Size:
+				<input id="cursorSize" type="number" min="1" max="100" value="5">
+					
+				</input>
+			</label>
+		</div> -->
+	</div>
+</body>
+</html>

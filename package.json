@@ -1,0 +1,15 @@
+{
+  "name": "drawwithfriends",
+  "version": "1.0.0",
+  "description": "A Draw With Friends Clone",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js"
+  },
+  "author": "Jack Bass",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.14.0",
+    "socket.io": "^1.4.8"
+  }
+}

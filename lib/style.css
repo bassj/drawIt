@@ -1,0 +1,16 @@
+*.chat {
+	display: inline-block;
+	width:250px;
+	height: 567px;
+	margin-top: 0;
+	vertical-align: top;
+	overflow: scroll;
+}
+
+*.game {
+	display:inline-block;
+	border: solid 1px black;
+	margin-left:auto;
+	margin-right: auto;
+	float: left;
+}
