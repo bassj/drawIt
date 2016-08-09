@@ -1,6 +1,6 @@
 {
-  "name": "drawwithfriends",
-  "version": "1.0.0",
+  "name": "drawit",
+  "version": "0.1.30",
   "description": "A Draw With Friends Clone",
   "main": "index.js",
   "scripts": {
@@ -9,7 +9,17 @@
   "author": "Jack Bass",
   "license": "ISC",
   "dependencies": {
+    "ejs": "^2.5.1",
     "express": "^4.14.0",
     "socket.io": "^1.4.8"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/freethegrass/drawIt.git"
+  },
+  "bugs": {
+    "url": "https://github.com/freethegrass/drawIt/issues"
+  },
+  "homepage": "https://github.com/freethegrass/drawIt#readme"
 }
