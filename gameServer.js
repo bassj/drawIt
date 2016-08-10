@@ -1,85 +1,7 @@
 const wordList = [
-	"nigger",
-	"football",
-	"basketball",
-	"asshole",
-	"deer",
-	"star",
-	"gun",
-	"landon",
-	"casey",
-	"konrad",
-	"mail",
-	"people",
-	"history",
-	"world",
-	"computer",
-	"food",
-	"police",
-	"bird",
-	"power",
-	"television",
-	"cunt",
-	"dick",
-	"duck",
-	"faggot",
-	"csgo",
-	"joe",
-	"atlas",
-	"youtube",
-	"skyscraper",
-	"fan",
-	"google",
-	"website",
-	"penis",
-	"semen",
-	"boat",
-	"waffle",
-	"bizon",
-	"autoshotty",
-	"kfc",
-	"slimchickens",
-	"lucas",
-	"hail",
-	"nazi",
-	"suprise",
-	"bait",
-	"harambe",
-	"house",
-	"tree",
-	"family",
-	"lynch",
-	"micropenis",
-	"soccer",
-	"glock",
-	"mad",
-	"rage",
-	"truck",
-	"bucket",
-	"tractor",
-	"mipper10",
-	"dust2",
-	"mirage",
-	"dinner",
-	"dessert",
-	"desert",
-	"bus",
-	"anomaly",
-	"gambling",
-	"soup",
-	"office",
-	"cigarrette",
-	"newspaper",
-	"magazine",
-	"phone",
-	"lake",
-	"customer",
-	"blood",
-	"city",
-	"photo",
-	"depression",
-	"imgaination",
-	"attitude",
+	"cat",
+	"bat",
+	"house"
 ]
 
 function randomWord() {
@@ -202,12 +124,21 @@ class GameServer {
 	}
 
 	reset() {
+		this.io.emit('reset');
 		for (var i in this.players) {
-			console.log(i);
 			this.players[i].drawing = false;
 			this.currentDrawer = null;
-			this.io.emit('reset');
 		}
+	}
+
+	addPoints(id, points) {
+		
+	}
+
+	setDrawing(id) {
+		this.currentDrawer = id;
+		this.players[id].drawing = true;
+		this.io.emit('players', this.players);
 	}
 }
 
