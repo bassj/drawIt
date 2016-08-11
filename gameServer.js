@@ -23,6 +23,7 @@ class GameServer {
 		this.players = [];
 		this.currentWord = randomWord();
 		this.currentArtist = 0;
+		this.correctGuesses = 0;
 
 		this.playersInterval = setInterval((() => {
 			this.broadcastPlayers();
@@ -48,12 +49,12 @@ class GameServer {
 
 				if (data.message.startsWith('/guess')) {
 					if (player.drawing) {
-						this.whisper(socket.id, "The word is: " + this.currentWord);
+						this.whisper(player, "The word is: " + this.currentWord);
 					} else {
 						var guess = data.message.substr(data.message.indexOf(' ')).trim();
 						
 						if (guess) {
-							this.playerGuessed(guess, id);
+							this.playerGuessed(guess, player);
 						}
 					}
 				} else {
@@ -80,8 +81,6 @@ class GameServer {
 				} else if (this.players.length = 0) {
 					this.currentArtist = 0;
 				}
-
-				
 				
 			}).bind(this));
 			
@@ -90,6 +89,7 @@ class GameServer {
 
 	reset() {
 		this.io.emit('reset');
+		this.correctGuesses = 0;
 		this.currentWord = randomWordNot(this.currentWord);
 		for (var i in this.players) {
 			this.players[i].drawing = false;
@@ -140,7 +140,7 @@ class GameServer {
 		if (word.toLowerCase() == this.currentWord) {
 			var value = 3 - this.correctGuesses;
 			this.broadcast(player.name + " has guessed correctly. " + "(" + value + " points)");
-			player.points += value;
+			player.score += value;
 			this.correctGuesses++;
 			this.broadcastPlayers();
 			if (this.correctGuesses == 3) {
@@ -149,6 +149,8 @@ class GameServer {
 				this.advanceArtist();
 			}
 
+		} else {
+			this.whisper(player, "That is not correct. Landon");
 		}
 	}
 }

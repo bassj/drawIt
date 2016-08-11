@@ -48,11 +48,10 @@ $(document).ready(function () {
 			var player = players[i];
 
 			var playerElement = document.createElement('li');
-			console.log(player);
 			if (player.drawing) {
-				playerElement.class = "list-group-item active";
+				playerElement.setAttribute("class", "list-group-item active");
 			} else {
-				playerElement.class = "list-group-item";
+				playerElement.setAttribute("class", "list-group-item");
 			}
 
 			var playerScore = document.createElement('strong');
