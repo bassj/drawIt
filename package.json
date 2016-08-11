@@ -4,13 +4,15 @@
   "description": "A Draw With Friends Clone",
   "main": "index.js",
   "scripts": {
-    "test": "node index.js"
+    "test": "node index.js",
+    "build": "cd lib/jquery/ & npm run build"
   },
   "author": "Jack Bass",
   "license": "ISC",
   "dependencies": {
     "ejs": "^2.5.1",
     "express": "^4.14.0",
+    "jquery": "^3.1.0",
     "socket.io": "^1.4.8"
   },
   "devDependencies": {},
