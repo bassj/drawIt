@@ -1,6 +1,6 @@
 var gameCanvas, gameContext;
 
-$(document).ready(function () {
+$(document).ready(() => {
 	gameCanvas  = document.getElementById('gameCanvas');
 	gameContext = gameCanvas.getContext('2d');
 
@@ -19,7 +19,7 @@ $(document).ready(function () {
 
 	var updateInterval;
 
-	var gameServer = io.connect("/testGame");
+	var gameServer = io.connect("/" + serverName);
 	
 	var drawFunc = function () {
 		if (isDrawing) {
@@ -67,13 +67,7 @@ $(document).ready(function () {
 	});
 
 	gameServer.on('connect', () => {
-		var name;
-
-		do {
-			name = prompt("Please enter a name");
-		} while (!name);
-
-		gameServer.emit('setname', {name:name});
+		gameServer.emit('auth', {password: serverPass});
 	});
 
 	gameServer.on('reset', () => {

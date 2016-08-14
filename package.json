@@ -1,6 +1,6 @@
 {
   "name": "drawit",
-  "version": "0.1.32",
+  "version": "0.2.02",
   "description": "A Draw With Friends Clone",
   "main": "index.js",
   "scripts": {
@@ -10,9 +10,10 @@
   "author": "Jack Bass",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.15.2",
     "ejs": "^2.5.1",
     "express": "^4.14.0",
-    "jquery": "^3.1.0",
+    "express-session": "^1.14.0",
     "socket.io": "^1.4.8"
   },
   "devDependencies": {},

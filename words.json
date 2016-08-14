@@ -26,10 +26,8 @@
 	"germany",
 	"switzerland",
 	"amsterdam",
-	"norway",
 	"poland",
 	"africa",
-	"ukraine",
 	"russia",
 	"korea",
 	
@@ -39,6 +37,27 @@
 	"grass",
 	"pot",
 	"dirt",
-	"leaf"
+	"leaf",
+	
+	"aTlas",
+	"konrad",
+	"casey",
+	"landon",
+	"jared",
+	"hail",
+	"lucas",
 
+	"ak47",
+	"bizon",
+	"csgo",
+	"p90",
+	"m4",
+	"blyat",
+
+	"trump",
+	"clinton",
+	"obama",
+	"putin",
+
+	"vodka"
 ]

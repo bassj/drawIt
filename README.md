@@ -1,6 +1,5 @@
 #DrawIt
-An open source, nodejs based implementation of pictionary.
-
+An open source, nodejs based draw with friends style game.
 #Dependencies
 	-expressjs
 	-socket.io
@@ -8,6 +7,9 @@ An open source, nodejs based implementation of pictionary.
 	-jquery
 	-jscolor
 	-bootstrap
+	-body-parser
+	-express-session
+
 
 #Setup
 	Clone the repository with: git clone https://github.com/freethegrass/drawIt.git

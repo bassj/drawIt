@@ -17,9 +17,11 @@ function randomWordNot(word) {
 }
 
 class GameServer {
-	constructor(io) {
-		this.io = io;
-
+	constructor(io, name, password, maxPlayers, gameId) {
+		this.io = io.of(gameId);
+		this.name = name;
+		this.password = password;
+		this.maxPlayers = maxPlayers;
 		this.players = [];
 		this.currentWord = randomWord();
 		this.currentArtist = 0;
@@ -32,16 +34,39 @@ class GameServer {
 		this.io.on('connection', ((socket) => {
 			var player = {socket: socket, drawing: false, score: 0, id: socket.id};
 
-			socket.on('setname', (data) => {
-				player.name = data.name;
+			socket.on('auth', (data) => {
+				if  (this.password) {
+					if (data.password) {
+						if (data.password == this.password) {
+							player.name = socket.request.session.name;
+						
+							this.broadcast(player.name + " has joined.");
+							if (this.players.length == 0) {
+								this.reset();
+								this.setDrawing(player);
+							}
 
-				this.broadcast(data.name + " has joined.");
-				if (this.players.length == 0) {
-					this.reset();
-					this.setDrawing(player);
+							this.players.push(player);
+						} else {
+							socket.emit('chat', {sender: "SERVER", message: "Incorrect password."});
+							socket.disconnect();
+						}
+					} else {
+						socket.emit('chat', {sender: "SERVER", message: "Incorrect password."});
+						socket.disconnect();
+					}
+				} else {
+					player.name = socket.request.session.name;
+
+					this.broadcast(player.name + " has joined.");
+					if (this.players.length == 0) {
+						this.reset();
+						this.setDrawing(player);
+					}
+
+					this.players.push(player);
 				}
-
-				this.players.push(player);
+				
 			});
 
 			socket.on('chat', ((data) => {
