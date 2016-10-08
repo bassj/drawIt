@@ -1,20 +1,20 @@
-var fs		   = require('fs'),
-	http	   = require('http'),
-	express    = require('express'),
-	socketio   = require('socket.io'),
-	bodyParser = require('body-parser'),
-	crypto     = require('crypto'),
-	session    = require('express-session'),
-	GameServer = require('./gameServer.js');
+const fs		 = require('fs'),
+	  http	     = require('http'),
+	  express    = require('express'),
+	  socketio   = require('socket.io'),
+	  bodyParser = require('body-parser'),
+	  crypto     = require('crypto'),
+	  session    = require('express-session'),
+	  GameServer = require('./gameServer.js');
 
 
 const version = "0.2.02"
 
-var app = express();
+const app = express();
 
-var server = http.Server(app);
+const server = http.Server(app);
 
-var io = socketio(server);
+const io = socketio(server);
 
 
 function hash(string) {
@@ -24,10 +24,10 @@ function hash(string) {
 }
 
 
-var gameServers = {};
+const gameServers = {};
 
-var sessionMiddleware = session({
-	secret: fs.readFileSync('secret'), //CHANGE THE CONTENTS OF THIS FILE IF YOU'RE DEPLOYING TO THE PUBLIC
+const sessionMiddleware = session({
+	secret: fs.readFileSync('secret').toString(), //CHANGE THE CONTENTS OF THIS FILE IF YOU'RE DEPLOYING TO THE PUBLIC
 	resave: true,
 	saveUninitialized: true, 
 });
@@ -84,15 +84,16 @@ app.get('/game', (req, res) => {
 });
 
 app.get('/games', (req, res) => {
-	var games = [];
+	const games = [];
 
-	for (var key in gameServers) {
+	for (let key in gameServers) {
 		if (gameServers.hasOwnProperty(key)) {
-			var game = {};
+			const game = {};
 			game.name = gameServers[key].name;
 			game.password = (gameServers[key].password != null);
 			game.maxPlayers = gameServers[key].maxPlayers;
 			game.players = gameServers[key].players.length;
+			game.id = key;
 			games.push(game);
 		}
 	}

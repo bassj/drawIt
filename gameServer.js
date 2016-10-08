@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-var wordList = JSON.parse(fs.readFileSync(__dirname + '/words.json'));
+const wordList = JSON.parse(fs.readFileSync(__dirname + '/words.json'));
 
 function randomWord() {
 	return wordList[Math.floor(Math.random() * wordList.length)];
@@ -32,7 +32,7 @@ class GameServer {
 		}).bind(this), 1000);
 
 		this.io.on('connection', ((socket) => {
-			var player = {socket: socket, drawing: false, score: 0, id: socket.id};
+			const player = {socket: socket, drawing: false, score: 0, id: socket.id};
 
 			socket.on('auth', (data) => {
 				if  (this.password) {
@@ -122,7 +122,7 @@ class GameServer {
 	}
 
 	setDrawing(player) {
-		for (var p in this.players) {
+		for (let p in this.players) {
 			this.players[p].drawing = false;
 		}
 		player.drawing = true;
@@ -147,7 +147,7 @@ class GameServer {
 	}
 
 	broadcastPlayers() {
-		var players = [];
+		const players = [];
 
 		for (var p in this.players) {
 			var player = {};
@@ -162,14 +162,15 @@ class GameServer {
 	}
 
 	playerGuessed(word, player) {
+		const maxGuesses = Math.min(3, this.players.length - 1);
 		if (word.toLowerCase() == this.currentWord) {
-			var value = 3 - this.correctGuesses;
-			this.broadcast(player.name + " has guessed correctly. " + "(" + value + " points)");
+			const value = 3 - this.correctGuesses;
+			this.broadcast(`${player.name} has guessed correctly. (${value} points)`);
 			player.score += value;
 			this.correctGuesses++;
 			this.broadcastPlayers();
-			if (this.correctGuesses == 3) {
-				this.broadcast("The word was " + this.currentWord);
+			if (this.correctGuesses == maxGuesses) {
+				this.broadcast(`The word was ${this.currentWord}`);
 				this.reset();
 				this.advanceArtist();
 			}

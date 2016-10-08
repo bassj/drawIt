@@ -3,6 +3,9 @@ $(document).ready(() => {
 		$("#gamePassword").attr("disabled", !document.getElementById("hasPassword").checked);
 	});
 
+	$("#joinGame").submit(() => {
+		console.log("adsfadsf");
+	});
 
 	$.get('/games', function (data) {
 		var numRows = Math.floor(data.length / 4);
@@ -28,7 +31,7 @@ $(document).ready(() => {
 			var gamewords = document.createElement('span');
 			var gametype = document.createElement('span');
 			var gamepass = document.createElement('span');
-			var joinbutton = document.createElement('button');
+			var joinbutton = document.createElement('a');
 
 			gameicon.setAttribute("class", "gameicon");
 
@@ -45,6 +48,8 @@ $(document).ready(() => {
 			gametype.innerText = "GameType: Round-Robin";
 			gamepass.innerText = "Password: " + ((game.password)? "Yes":"No");
 			joinbutton.innerText = "Join Me!";
+			console.log(game);
+			joinbutton.setAttribute("href", `/game?id=${game.id}&pass=undefined`);
 
 			gameicon.appendChild(gamename);
 			gameicon.appendChild(gameplayers);

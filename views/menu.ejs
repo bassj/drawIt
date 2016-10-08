@@ -11,7 +11,7 @@
 <body>
 	<nav class="navbar navbar-inverse">
 		<div class="navbar-header">
-			<a class="navbar-brand" href="/menu">DrawIt <%= version%></a>
+			<a class="navbar-brand" href="/">DrawIt <%= version%></a>
 		</div>
 		<ul class="nav navbar-nav">
 			<li><button id="createGame" class="btn btn-primary navbar-btn" data-toggle="modal" data-target="#createModal">Create a Game</button></li>
@@ -19,6 +19,26 @@
 	</nav>
 
 	<div id="setName" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title">Set Name</h4>
+				</div>
+				<div class="modal-body">
+					<form role="form" action="/setname" method="post">
+						<div class="input-group">
+							<input type="text" class="form-control" name="name" placeholder="Enter Name"></input>
+							<span class="input-group-btn">
+								<button class="btn btn-primary">Submit</button>
+							</span>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="joinGame" class="modal fade" role="dialog">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
