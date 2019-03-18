@@ -1,28 +1,31 @@
 {
   "name": "drawit",
-  "version": "0.2.02",
-  "description": "A Draw With Friends Clone",
+  "version": "1.0.0",
+  "description": "An open source, nodejs based draw with friends style game.\r #Dependencies\r \t-expressjs\r \t-socket.io\r \t-ejs\r \t-jquery\r \t-jscolor\r \t-bootstrap\r \t-body-parser\r \t-express-session",
   "main": "index.js",
   "scripts": {
-    "test": "node index.js",
-    "build": "cd lib/jquery/ & npm run build"
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bassj/drawIt.git"
   },
   "author": "Jack Bass",
   "license": "ISC",
-  "dependencies": {
-    "body-parser": "^1.15.2",
-    "ejs": "^2.5.1",
-    "express": "^4.14.0",
-    "express-session": "^1.14.0",
-    "socket.io": "^1.4.8"
-  },
-  "devDependencies": {},
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/freethegrass/drawIt.git"
-  },
   "bugs": {
-    "url": "https://github.com/freethegrass/drawIt/issues"
+    "url": "https://github.com/bassj/drawIt/issues"
   },
-  "homepage": "https://github.com/freethegrass/drawIt#readme"
+  "homepage": "https://github.com/bassj/drawIt#readme",
+  "dependencies": {
+    "@zeit/next-css": "^1.0.1",
+    "body-parser": "^1.18.3",
+    "es6-promise": "^4.2.6",
+    "isomorphic-fetch": "^2.2.1",
+    "next": "^8.0.3",
+    "react": "^16.8.4",
+    "react-dom": "^16.8.4",
+    "socketio": "^1.0.0"
+  }
 }
